@@ -1,10 +1,10 @@
 import struct, math, fcns
 
-nodes = fcns.nodify([[10,5,13],[3,9,18],[10,2,2]])
+nodes = fcns.nodify([[10,5,4],[3,9,18],[10,2,2]])
 
 min_sum = struct.Sum([], math.inf)
 cur_sum = struct.Sum([], 0)
-p=0
+p = 0
 col_left = len(nodes) 
 
 while col_left > 0:
@@ -15,9 +15,8 @@ while col_left > 0:
             cur_sum.val += nodes[p][j].val
             cur_sum.List.append(j)
 
-            print(cur_sum.val)
-
-            p += 1
+            if (p < (len(nodes[p])-1)):
+                p += 1
             break
 
         elif (j == len(nodes[p])-1):
@@ -25,10 +24,12 @@ while col_left > 0:
                 if nodes[p][c].status == "blocked" and (c not in cur_sum.List):
                     nodes[p][c].status = "open"
 
+            if (p == 0):
+                nodes[p][j].status = "blocked"
+                col_left -= 1
+                break 
+
             p -= 1
-
-            print("\nj: ", cur_sum.val)
-
             cur_sum.val -= nodes[p][cur_sum.List[-1]].val
             fcns.unBlock(nodes, p, cur_sum.List[-1])
             del cur_sum.List[-1]
@@ -38,14 +39,11 @@ while col_left > 0:
 
             break
 
-    if (p == (len(nodes)-1)):
+    if (p == (len(nodes)-1) and (len(cur_sum.List) == len(nodes[0]))):
         min_sum.val = cur_sum.val
-        min_sum.List = cur_sum.List
-
-        print("Subtraction here: ", nodes[p][cur_sum.List[-1]].val)
-
+        min_sum.List = cur_sum.List[:]
         cur_sum.val -= nodes[p][cur_sum.List[-1]].val
-        fcns.blockDown(nodes, p, cur_sum.List[-1])
+        nodes[p][cur_sum.List[-1]].status = "blocked"
         del cur_sum.List[-1]
 
 print(min_sum.List,",",min_sum.val)
