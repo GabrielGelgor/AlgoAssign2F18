@@ -46,4 +46,4 @@ while col_left > 0:
         nodes[p][cur_sum.List[-1]].status = "blocked"
         del cur_sum.List[-1]
 
-print(min_sum.List,",",min_sum.val)
+print("Employee Order: ", min_sum.List,", Minimum Time: ",min_sum.val," Hours.")
