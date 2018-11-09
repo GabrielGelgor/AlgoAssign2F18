@@ -17,10 +17,10 @@ class Graph():
 		for vertex in range(0,n):
 			if (root == vertex) continue
 
-			else if (AssignmentList[root] == AssignmentList[vertex]):
+			else if (adjMatrix[root][vertex] == 0 and AssignmentList[root] == AssignmentList[vertex]):
 				return False
 
-			else if (adjMatrix[root][vertex] == 0):
+			else if (adjMatrix[root][vertex] == 0 and AssignmentList[root] != AssignmentList[vertex]):
 				AssignmentList[vertex] = 3 - AssignmentList[root]
 				adjList.append(vertex)
 	return True

@@ -38,9 +38,9 @@ while adjacencyList is not empty
 
 		if root = vertex continue
 
-		else if AssignmentList[root] = AssignmentList[vertex] then return False
+		else if adjMatrix[root][vertex] = 0 and AssignmentList[root] = AssignmentList[vertex] then return False
                 
-		else if adjacencyMatrix[root][vertex] = 0 then 
+		else if adjacencyMatrix[root][vertex] = 0 and AssignmentList[root] != AssignmentList[vertex] then 
 			AssignmentList[vertex] = 3 - AssignmentList[root]
 			adjacencyList <-- vertex
 		
