@@ -1,0 +1,49 @@
+Expedition partition using graphs:
+
+Input: n x n adjacency matrix
+Output: List of people in group 1
+
+adjacencyMatrix <--- input
+
+AssignmentList = []
+isPossible <-- False
+
+for i from 1 to n
+	AssignmentList[i] <-- 0
+
+for i from 1 to n
+	if AssignmentList[i] = 0 then
+		isPossible <-- BFSpartition(i, AssingmentList)
+		if isPossible = False then break
+
+if isPossible = False then print error
+
+else
+	for i from 1 to n
+	if AssignmentList[i] = 1 then print AssignmentList[i]
+
+ 
+BFSpartition(i, AssignmentList):
+
+Input: starting node, Assignment List
+Output: Assignment List with assigned groups and whether the assignment was possible or not
+
+adjacencyList <-- i
+
+AssignmentList[i] <-- 1
+
+while adjacencyList is not empty
+	root <-- adjacencyList.pop(0)
+	for vertex from 1 to n
+
+		if root = vertex continue
+
+		else if AssignmentList[root] = AssignmentList[vertex] then return False
+                
+		else if adjacencyMatrix[root][vertex] = 0 then 
+			AssignmentList[vertex] = 3 - AssignmentList[root]
+			adjacencyList <-- vertex
+		
+return True
+					
+
