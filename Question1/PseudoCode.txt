@@ -20,7 +20,7 @@ if isPossible = False then print error
 
 else
 	for i from 1 to n
-	if AssignmentList[i] = 1 then print AssignmentList[i]
+	if AssignmentList[i] = 1 then print i
 
  
 BFSpartition(i, AssignmentList):
@@ -41,8 +41,8 @@ while adjacencyList is not empty
 		else if adjMatrix[root][vertex] = 0 and AssignmentList[root] = AssignmentList[vertex] then return False
                 
 		else if adjacencyMatrix[root][vertex] = 0 and AssignmentList[root] != AssignmentList[vertex] then 
+			if AssignmentList[vertex] = 0 then adjacencyList <-- vertex
 			AssignmentList[vertex] = 3 - AssignmentList[root]
-			adjacencyList <-- vertex
 		
 return True
 					

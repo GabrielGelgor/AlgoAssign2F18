@@ -12,15 +12,17 @@ class Graph():
         AssignmentList[i] = 1
 
         while (len(adjList) > 0):
+
             root = adjList.pop(0)
 
-            for vertex in range(0,n):
-                if (root == vertex) continue
+            for vertex in range(0,self.n):
+                if (root == vertex): continue
 
-                else if (adjMatrix[root][vertex] == 0 and AssignmentList[root] == AssignmentList[vertex]):
+                elif (self.adjMatrix[root][vertex] == 0 and AssignmentList[root] == AssignmentList[vertex]):
                     return False
 
-                else if (adjMatrix[root][vertex] == 0 and AssignmentList[root] != AssignmentList[vertex]):
+                elif (self.adjMatrix[root][vertex] == 0 and AssignmentList[root] != AssignmentList[vertex]):
+                    if (AssignmentList[vertex] == 0):
+                        adjList.append(vertex)
                     AssignmentList[vertex] = 3 - AssignmentList[root]
-                    adjList.append(vertex)
         return True
