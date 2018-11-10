@@ -18,6 +18,8 @@ for i in range(0,5):
 if (isPossible == False):
     print("There is no possible solution for the given input")
 else:
+    print("People assigned to group 1: ", end = "", flush = True)
     for i in range(0,5):
         if (AssignmentList[i] == 1):
-            print(i)
+            print(str(i) + " ", end = "", flush = True)
+    print()
