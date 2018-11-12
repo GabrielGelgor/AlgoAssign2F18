@@ -1,6 +1,6 @@
 import struct, math, fcns
 
-nodes = fcns.nodify([[10,5,13,15,16],[3,9,18,13,6],[10,7,2,2,2],[7,11,9,7,12],[7,9,10,4,12]])
+nodes = fcns.nodify([[10,3,10,7,7],[5,9,7,11,9],[13,18,2,9,10],[15,13,2,7,4],[16,6,2,12,12]])
 
 min_sum = struct.Sum([], math.inf)
 cur_sum = struct.Sum([], 0)
